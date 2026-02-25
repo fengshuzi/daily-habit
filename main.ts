@@ -1034,28 +1034,7 @@ class HabitTrackerPlugin extends Plugin {
             callback: () => this.refreshData()
         });
 
-        // 监听日记文件变化（Alfred/外部写入等），清除缓存并刷新视图，无需定时轮询
-        this.registerEvent(
-            this.app.vault.on('modify', (file) => {
-                if (file instanceof TFile && this.storage.onFileChange(file)) {
-                    this.refreshData();
-                }
-            })
-        );
-        this.registerEvent(
-            this.app.vault.on('create', (file) => {
-                if (file instanceof TFile && this.storage.onFileChange(file)) {
-                    this.refreshData();
-                }
-            })
-        );
-        this.registerEvent(
-            this.app.vault.on('delete', (file) => {
-                if (file instanceof TFile && this.storage.onFileChange(file)) {
-                    this.refreshData();
-                }
-            })
-        );
+        // 只监听 metadataCache.changed：覆盖 Obsidian 内保存 + Alfred/外部写文件（重新解析时触发），避免多路监听导致列表重复刷新
         this.registerEvent(
             this.app.metadataCache.on('changed', (file) => {
                 if (file instanceof TFile && this.storage.onFileChange(file)) {
