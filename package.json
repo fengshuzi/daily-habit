@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "node esbuild.config.mjs",
     "lint": "eslint main.ts",
-    "build": "node esbuild.config.mjs production && cp manifest.json styles.css config.json dist/",
+    "build": "npm run lint && node esbuild.config.mjs production && cp manifest.json styles.css config.json dist/",
     "deploy": "npm run build && node deploy.mjs",
     "release": "node release.mjs"
   },
