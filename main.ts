@@ -1,4 +1,4 @@
-const { Plugin, ItemView, Modal, Notice, TFile } = require('obsidian');
+import { Plugin, ItemView, Modal, Notice, TFile } from 'obsidian';
 
 // 辅助函数：格式化本地日期为 YYYY-MM-DD（避免 UTC 时区问题）
 function formatLocalDate(date) {
@@ -117,11 +117,11 @@ class HabitStorage {
         }
         
         if (this.isCacheValid()) {
-            console.log('使用缓存的打卡记录');
+            console.debug('使用缓存的打卡记录');
             return this.cache.records;
         }
         
-        console.log('重新加载打卡记录...');
+        console.debug('重新加载打卡记录...');
         
         const { vault } = this.app;
         const records = [];
@@ -135,7 +135,7 @@ class HabitStorage {
         const datePattern = /\d{4}-\d{2}-\d{2}\.md$/;
         const dateFiles = allFiles.filter(file => datePattern.test(file.name));
         
-        console.log(`总文件数: ${allFiles.length}，日期格式文件: ${dateFiles.length}`);
+        console.debug(`总文件数: ${allFiles.length}，日期格式文件: ${dateFiles.length}`);
         
         // 批量处理
         const batchSize = 50;
@@ -158,7 +158,7 @@ class HabitStorage {
             });
         }
         
-        console.log(`总共找到 ${records.length} 条打卡记录`);
+        console.debug(`总共找到 ${records.length} 条打卡记录`);
         
         // 更新缓存
         this.cache.records = records;
@@ -334,9 +334,7 @@ class HabitConfigModal extends Modal {
 
     renderBasicTab() {
         const description = this.contentArea.createDiv('config-description');
-        description.innerHTML = `
-            <p>自定义应用名称，让习惯追踪更具个性化</p>
-        `;
+        description.createEl('p', { text: '自定义应用名称，让习惯追踪更具个性化' });
 
         const nameSection = this.contentArea.createDiv('config-section');
         nameSection.createEl('h3', { text: '应用名称' });
@@ -374,10 +372,12 @@ class HabitConfigModal extends Modal {
 
     renderHabitsTab() {
         const description = this.contentArea.createDiv('config-description');
-        description.innerHTML = `
-            <p>配置习惯关键词和对应的中文名称</p>
-            <p><strong>使用方法：</strong> 在日记中写 <code>#reading</code> 表示完成阅读打卡</p>
-        `;
+        description.createEl('p', { text: '配置习惯关键词和对应的中文名称' });
+        const usage = description.createEl('p');
+        usage.createEl('strong', { text: '使用方法：' });
+        usage.appendText(' 在日记中写 ');
+        usage.createEl('code', { text: '#reading' });
+        usage.appendText(' 表示完成阅读打卡');
 
         this.habitList = this.contentArea.createDiv('habit-list');
         this.renderHabitList();
@@ -481,8 +481,8 @@ class HabitConfigModal extends Modal {
                 await leaf.setViewState({ type: 'empty' });
             }
             
-            setTimeout(async () => {
-                await this.plugin.activateView();
+            setTimeout(() => {
+                void this.plugin.activateView();
                 new Notice('配置已保存并刷新');
             }, 100);
         } catch (error) {
@@ -595,12 +595,13 @@ class HabitTrackerView extends ItemView {
                 endDate = this.getWeekEnd(now);
                 break;
                 
-            case 'lastWeek':
+            case 'lastWeek': {
                 const lastWeek = new Date(now);
                 lastWeek.setDate(lastWeek.getDate() - 7);
                 startDate = this.getWeekStart(lastWeek);
                 endDate = this.getWeekEnd(lastWeek);
                 break;
+            }
                 
             case 'thisMonth':
                 startDate = new Date(now.getFullYear(), now.getMonth(), 1);
@@ -1010,7 +1011,7 @@ class HabitTrackerView extends ItemView {
 // 主插件类
 class HabitTrackerPlugin extends Plugin {
     async onload() {
-        console.log('加载掌控习惯插件');
+        console.debug('加载掌控习惯插件');
 
         await this.loadConfig();
         this.storage = new HabitStorage(this.app, this.config);
@@ -1019,7 +1020,7 @@ class HabitTrackerPlugin extends Plugin {
 
         const appName = this.config.appName || '掌控习惯';
         this.addRibbonIcon('check-circle', appName, () => {
-            this.activateView();
+            void this.activateView();
         });
 
         this.addCommand({
@@ -1038,15 +1039,14 @@ class HabitTrackerPlugin extends Plugin {
         this.registerEvent(
             this.app.metadataCache.on('changed', (file) => {
                 if (file instanceof TFile && this.storage.onFileChange(file)) {
-                    this.refreshData();
+                    void this.refreshData();
                 }
             })
         );
     }
 
-    async onunload() {
-        console.log('卸载掌控习惯插件');
-        this.app.workspace.detachLeavesOfType(HABIT_VIEW);
+    onunload() {
+        console.debug('卸载掌控习惯插件');
     }
 
     async loadConfig() {
@@ -1057,9 +1057,9 @@ class HabitTrackerPlugin extends Plugin {
             if (await adapter.exists(configPath)) {
                 const configContent = await adapter.read(configPath);
                 this.config = JSON.parse(configContent);
-                console.log('配置加载成功:', this.config);
+                console.debug('配置加载成功:', this.config);
             } else {
-                console.log('配置文件不存在，使用默认配置');
+                console.debug('配置文件不存在，使用默认配置');
                 this.config = this.getDefaultConfig();
             }
         } catch (error) {
