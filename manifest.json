@@ -1,10 +1,10 @@
 {
-    "id": "obsidian-habit-tracker",
-    "name": "掌控习惯",
+    "id": "daily-habit",
+    "name": "Daily Habit",
     "version": "1.0.0",
     "minAppVersion": "1.2.8",
-    "description": "基于日记文件的习惯打卡追踪插件，日历视图展示打卡记录。",
-    "author": "Your Name",
-    "authorUrl": "https://github.com/yourusername",
+    "description": "Track habits with diary-based check-ins and 7-day dot visualization.",
+    "author": "lizhifeng",
+    "authorUrl": "https://github.com/fengshuzi",
     "isDesktopOnly": false
 }

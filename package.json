@@ -1,21 +1,31 @@
 {
-  "name": "obsidian-habit-tracker",
+  "name": "daily-habit",
   "version": "1.0.0",
-  "description": "基于日记文件的习惯打卡追踪插件",
+  "description": "Track habits with diary-based check-ins and 7-day dot visualization.",
   "main": "main.js",
   "scripts": {
     "dev": "node esbuild.config.mjs",
+    "lint": "eslint main.ts",
     "build": "node esbuild.config.mjs production && cp manifest.json styles.css config.json dist/",
     "deploy": "npm run build && node deploy.mjs",
     "release": "node release.mjs"
   },
-  "keywords": ["obsidian", "plugin", "habit", "tracker"],
-  "author": "",
+  "keywords": [
+    "obsidian",
+    "habit",
+    "tracker"
+  ],
+  "author": "lizhifeng",
   "license": "MIT",
   "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "@eslint/json": "^0.14.0",
     "@types/node": "^16.11.6",
     "esbuild": "0.17.3",
+    "eslint": "^9.39.4",
+    "eslint-plugin-obsidianmd": "^0.1.9",
     "obsidian": "latest",
-    "typescript": "4.7.4"
+    "typescript": "4.7.4",
+    "typescript-eslint": "^8.58.2"
   }
 }

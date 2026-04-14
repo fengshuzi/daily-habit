@@ -1,4 +1,4 @@
-# 掌控习惯 - Obsidian 习惯追踪插件
+# Daily Habit - Obsidian Habit Tracker
 
 基于日记文件的习惯打卡追踪插件，使用习惯列表 + 最近7天圆点展示打卡记录。
 
@@ -24,17 +24,17 @@
    - `manifest.json`
    - `styles.css`
    - `config.json`
-3. 在你的 Obsidian 库中创建插件目录：`.obsidian/plugins/obsidian-habit-tracker/`
+3. 在你的 Obsidian 库中创建插件目录：`.obsidian/plugins/daily-habit/`
 4. 将下载的文件复制到该目录
 5. 重启 Obsidian 或刷新插件列表
-6. 在设置中启用"掌控习惯"插件
+6. 在设置中启用"Daily Habit"插件
 
 ### 方式二：手动安装
 
 ```bash
 cd /path/to/your/vault/.obsidian/plugins
-git clone https://github.com/你的用户名/obsidian-habit-tracker.git
-cd obsidian-habit-tracker
+git clone https://github.com/fengshuzi/daily-habit.git
+cd daily-habit
 npm install
 npm run build
 ```
@@ -59,7 +59,7 @@ npm run build
 
 ### 2. 查看统计
 
-点击左侧边栏的 ✓ 图标，或使用命令面板搜索"打开掌控习惯"，即可查看：
+点击左侧边栏的 ✓ 图标，或使用命令面板搜索"打开 Daily Habit"，即可查看：
 - 总打卡次数
 - 追踪习惯数
 - 各习惯完成情况
@@ -190,7 +190,7 @@ MIT
 
 ---
 
-💪 **开始使用掌控习惯，养成好习惯！**
+💪 **开始使用 Daily Habit，养成好习惯！**
 
 
 ---

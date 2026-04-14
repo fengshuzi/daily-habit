@@ -17,27 +17,27 @@ const NOTE_DEMO_PATH = join(
 const vaults = [
   {
     name: 'Mobile',
-    path: join(BASE_PATH, '.obsidian-mobile/plugins/obsidian-habit-tracker')
+    path: join(BASE_PATH, '.obsidian-mobile/plugins/daily-habit')
   },
   {
     name: 'Pro',
-    path: join(BASE_PATH, '.obsidian-pro/plugins/obsidian-habit-tracker')
+    path: join(BASE_PATH, '.obsidian-pro/plugins/daily-habit')
   },
   {
     name: 'iPad',
-    path: join(BASE_PATH, '.obsidian-ipad/plugins/obsidian-habit-tracker')
+    path: join(BASE_PATH, '.obsidian-ipad/plugins/daily-habit')
   },
   {
     name: '2017',
-    path: join(BASE_PATH, '.obsidian-2017/plugins/obsidian-habit-tracker')
+    path: join(BASE_PATH, '.obsidian-2017/plugins/daily-habit')
   },
   {
     name: 'Zhang',
-    path: join(BASE_PATH, '.obsidian-zhang/plugins/obsidian-habit-tracker')
+    path: join(BASE_PATH, '.obsidian-zhang/plugins/daily-habit')
   },
   {
     name: 'Note-Demo',
-    path: join(NOTE_DEMO_PATH, '.obsidian/plugins/obsidian-habit-tracker')
+    path: join(NOTE_DEMO_PATH, '.obsidian/plugins/daily-habit')
   }
 ];
 
