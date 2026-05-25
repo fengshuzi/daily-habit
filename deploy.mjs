@@ -73,6 +73,19 @@ vaults.forEach((vault) => {
         console.log(`  ⚠️  警告: ${file.source} 不存在`);
       }
     });
+
+    // 复制静态资源（如微信打赏二维码）
+    if (existsSync('dist/assets')) {
+      const assetsTarget = join(vault.path, 'assets');
+      if (!existsSync(assetsTarget)) mkdirSync(assetsTarget, { recursive: true });
+      ['wechat-donate.jpg'].forEach(f => {
+        const src = join('dist', 'assets', f);
+        if (existsSync(src)) {
+          copyFileSync(src, join(assetsTarget, f));
+          console.log(`  ✓ 已复制 assets/${f}`);
+        }
+      });
+    }
     
     console.log(`✅ ${vault.name} 部署成功\n`);
     successCount++;
