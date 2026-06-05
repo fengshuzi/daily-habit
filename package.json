@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "dev": "node esbuild.config.mjs",
-    "lint": "eslint main.ts",
+    "lint": "eslint \"**/*.{ts,tsx}\"",
     "build": "npm run lint && node esbuild.config.mjs production && cp manifest.json styles.css config.json dist/",
     "deploy": "npm run build && node deploy.mjs",
     "release": "node release.mjs"
@@ -25,7 +25,9 @@
     "eslint": "^9.39.4",
     "eslint-plugin-obsidianmd": "^0.1.9",
     "obsidian": "latest",
-    "typescript": "4.7.4",
-    "typescript-eslint": "^8.58.2"
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.58.2",
+    "@typescript-eslint/parser": "^8.58.2",
+    "@typescript-eslint/eslint-plugin": "^8.58.2"
   }
 }
