@@ -1,6 +1,6 @@
 {
   "name": "daily-habit",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Track habits with diary-based check-ins and 7-day dot visualization.",
   "main": "main.js",
   "scripts": {
