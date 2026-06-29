@@ -1,7 +1,7 @@
 {
     "id": "daily-habit",
     "name": "Daily Habit",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "minAppVersion": "1.2.8",
     "description": "Track habits with diary-based check-ins and 7-day dot visualization.",
     "author": "lizhifeng",

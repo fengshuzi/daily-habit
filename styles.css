@@ -911,3 +911,86 @@
         padding: 10px 16px;
     }
 }
+
+/* 深色主题 iOS 玻璃风 */
+.theme-dark .habit-tracker-view {
+    --habit-glass-bg: rgba(20, 26, 36, 0.56);
+    --habit-glass-elevated: rgba(28, 35, 48, 0.66);
+    --habit-glass-strong: rgba(36, 44, 60, 0.76);
+    --habit-glass-border: rgba(255, 255, 255, 0.16);
+    --habit-glass-highlight: rgba(255, 255, 255, 0.08);
+    --habit-glass-text: #f5f7fb;
+    --habit-glass-muted: #c5cede;
+}
+
+.theme-dark .habit-tracker-view .time-filters,
+.theme-dark .habit-tracker-view .habit-row,
+.theme-dark .habit-tracker-view .habit-stat-item,
+.theme-dark .habit-tracker-view .habit-calendar,
+.theme-dark .habit-tracker-view .checkin-date-group {
+    background: var(--habit-glass-bg);
+    border-color: var(--habit-glass-border);
+    box-shadow:
+        inset 0 1px 0 var(--habit-glass-highlight),
+        0 10px 30px rgba(0, 0, 0, 0.32);
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+}
+
+.theme-dark .habit-tracker-view .checkin-record-item,
+.theme-dark .habit-tracker-view .calendar-day {
+    background: var(--habit-glass-elevated);
+    border-color: var(--habit-glass-border);
+}
+
+.theme-dark .habit-tracker-view .habit-row-count,
+.theme-dark .habit-tracker-view .habit-count,
+.theme-dark .habit-tracker-view .checkin-weekday {
+    color: var(--habit-glass-muted);
+    background: rgba(148, 163, 184, 0.16);
+}
+
+.theme-dark .habit-tracker-view .calendar-weekday,
+.theme-dark .habit-tracker-view .stat-label {
+    color: var(--habit-glass-muted);
+}
+
+.theme-dark .habit-tracker-view .stats-overview .stat-card {
+    background: var(--habit-glass-strong);
+    border-color: var(--habit-glass-border);
+    box-shadow:
+        inset 0 1px 0 var(--habit-glass-highlight),
+        0 12px 34px rgba(0, 0, 0, 0.34);
+    backdrop-filter: blur(20px) saturate(165%);
+    -webkit-backdrop-filter: blur(20px) saturate(165%);
+}
+
+.theme-dark .habit-tracker-view .stats-overview .stat-card.total {
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.34), rgba(30, 64, 175, 0.5));
+}
+
+.theme-dark .habit-tracker-view .stats-overview .stat-card.habits {
+    background: linear-gradient(135deg, rgba(52, 211, 153, 0.32), rgba(4, 120, 87, 0.5));
+}
+
+.theme-dark .habit-tracker-view .stats-overview .stat-card .stat-label,
+.theme-dark .habit-tracker-view .stats-overview .stat-card .stat-value {
+    color: var(--habit-glass-text);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.26);
+}
+
+.theme-dark .habit-tracker-view .habit-streak,
+.theme-dark .habit-tracker-view .habit-row-streak {
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.24), rgba(146, 64, 14, 0.44));
+    color: #fef3c7;
+}
+
+.theme-dark .habit-tracker-view .calendar-day.today {
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.34), rgba(30, 64, 175, 0.52));
+    border-color: rgba(147, 197, 253, 0.55);
+}
+
+.theme-dark .habit-tracker-view .checkin-habit-tag {
+    background: linear-gradient(135deg, rgba(52, 211, 153, 0.38), rgba(4, 120, 87, 0.62));
+    color: #e8fff4;
+}
