@@ -1,10 +1,10 @@
 {
-    "id": "daily-habit",
-    "name": "Daily Habit",
-    "version": "1.0.2",
-    "minAppVersion": "1.2.8",
-    "description": "Track habits with diary-based check-ins and 7-day dot visualization.",
-    "author": "lizhifeng",
-    "authorUrl": "https://github.com/fengshuzi",
-    "isDesktopOnly": false
+  "id": "daily-habit",
+  "name": "Daily Habit",
+  "version": "1.0.3",
+  "minAppVersion": "1.13.0",
+  "description": "Track habits with diary-based check-ins and 7-day dot visualization.",
+  "author": "lizhifeng",
+  "authorUrl": "https://github.com/fengshuzi",
+  "isDesktopOnly": false
 }
